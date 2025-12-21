@@ -1,5 +1,6 @@
 /*
     Tutorial discord bot to practice getting the bot online
+    git test line (delete this line)
 */
 
 // necesary objects required from node.js
