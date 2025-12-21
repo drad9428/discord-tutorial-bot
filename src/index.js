@@ -2,11 +2,11 @@
     Tutorial discord bot to practice getting the bot online
 */
 
+// connect .env file for discord bot key security
+require('dotenv').config();
+
 // necesary objects required from node.js
 const {Client, IntentsBitField} = require('discord.js');
-
-// connect .env file for discord bot key security
-const env = require('dotenv').config();
 
 // setup for things bot will be using (needs permissions from discord server)
 const CLIENT = new Client({
@@ -24,12 +24,14 @@ CLIENT.on('clientReady', (client) => {
 })
 
 // when a message is sent, if it's not from the bot, bot repeats message
-CLIENT.on('messageCreate', (message) => {
-    if (message.author.bot){
+CLIENT.on('interactionCreate', (interaction) => {
+    if (!interaction.isChatInputCommand()){
         return;
     }
 
-    message.reply(message.content);
+    if(interaction.commandName === 'hey'){
+        interaction.reply("Hey!");
+    }
 })
 
 // connect to the bot using its token (hidden in .env file)
