@@ -6,12 +6,40 @@
 require('dotenv').config();
 
 // necesary objects required from node.js
-const {REST, Routes, managerToFetchingStrategyOptions} = require('discord.js');
+const {REST, Routes, managerToFetchingStrategyOptions, ApplicationCommandOptionType} = require('discord.js');
 
 const COMMANDS = [
     {
-        name: "hey",
-        description: "Replies with 'Hey!'"
+        name: "add",
+        description: "Adds two numbers",
+        options: [
+            {
+                name: "first-number",
+                description: "First number to be added",
+                type: ApplicationCommandOptionType.Number,
+                choices: [
+                    {
+                        name: "1",
+                        value: 1
+                    },
+                    {
+                        name: "2",
+                        value: 2
+                    },
+                    {
+                        name: "3",
+                        value: 3
+                    }
+                ],
+                required: true
+            },
+            {
+                name: "second-number",
+                description: "Second number to be added",
+                type: ApplicationCommandOptionType.Number,
+                required: true
+            },
+        ]
     },
 ]
 
