@@ -24,13 +24,34 @@ CLIENT.on('clientReady', (client) => {
 })
 
 // when a message is sent, if it's not from the bot, bot repeats message
-CLIENT.on('interactionCreate', (interaction) => {
-    if (!interaction.isChatInputCommand()){
-        return;
-    }
+CLIENT.on('interactionCreate', async (interaction) => {
+    try{
+        if (!interaction.isButton()){
+            return;
+        }
+        await interaction.deferReply({ephemeral: true})
 
-    if(interaction.commandName === 'hey'){
-        interaction.reply("Hey!");
+        const ROLE = interaction.guild.roles.cache.get(interaction.customId);
+        if(!ROLE){
+            interaction.editReply({
+                content: "Could not find role"
+            })
+            return
+        }
+
+        const HAS_ROLE = interaction.member.roles.cache.has(ROLE.id);
+
+        if (HAS_ROLE){
+            await interaction.member.roles.remove(ROLE);
+            await interaction.editReply(`${ROLE} has been removed`)
+            return
+        }
+
+        await interaction.member.roles.add(ROLE)
+        await interaction.editReply(`${ROLE} has been added`)
+    }
+    catch(error){
+        console.log(error)
     }
 })
 
