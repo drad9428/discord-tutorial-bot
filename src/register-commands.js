@@ -6,12 +6,13 @@
 require('dotenv').config();
 
 // necesary objects required from node.js
-const {REST, Routes, managerToFetchingStrategyOptions} = require('discord.js');
+const {REST, Routes, managerToFetchingStrategyOptions, ApplicationCommandOptionType} = require('discord.js');
 
 const COMMANDS = [
     {
-        name: "hey",
-        description: "Replies with 'Hey!'"
+        name: "embed",
+        description: "Sends an embed",
+        
     },
 ]
 

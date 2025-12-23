@@ -6,7 +6,7 @@
 require('dotenv').config();
 
 // necesary objects required from node.js
-const {Client, IntentsBitField} = require('discord.js');
+const {Client, IntentsBitField, EmbedBuilder} = require('discord.js');
 
 // setup for things bot will be using (needs permissions from discord server)
 const CLIENT = new Client({
