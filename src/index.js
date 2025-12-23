@@ -6,7 +6,7 @@
 require('dotenv').config();
 
 // necesary objects required from node.js
-const {Client, IntentsBitField} = require('discord.js');
+const {Client, IntentsBitField, EmbedBuilder} = require('discord.js');
 
 // setup for things bot will be using (needs permissions from discord server)
 const CLIENT = new Client({
@@ -29,11 +29,18 @@ CLIENT.on('interactionCreate', (interaction) => {
         return;
     }
 
-    if(interaction.commandName === 'add'){
-        const num1 = interaction.options.get('first-number').value;
-        const num2 = interaction.options.get('second-number').value;
+    if(interaction.commandName === 'embed'){
+        const embed = new EmbedBuilder()
+        .setTitle ("Embed title")
+        .setDescription("Embed description")
+        .setColor("Random")
+        .addFields({
+            name: "Field title",
+            value: "Value",
+            inline: true
+        });
 
-        interaction.reply(`${num1 + num2}`);
+        interaction.reply({embeds: [embed]});
     }
 })
 

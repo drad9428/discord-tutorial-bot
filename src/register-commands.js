@@ -10,36 +10,9 @@ const {REST, Routes, managerToFetchingStrategyOptions, ApplicationCommandOptionT
 
 const COMMANDS = [
     {
-        name: "add",
-        description: "Adds two numbers",
-        options: [
-            {
-                name: "first-number",
-                description: "First number to be added",
-                type: ApplicationCommandOptionType.Number,
-                choices: [
-                    {
-                        name: "1",
-                        value: 1
-                    },
-                    {
-                        name: "2",
-                        value: 2
-                    },
-                    {
-                        name: "3",
-                        value: 3
-                    }
-                ],
-                required: true
-            },
-            {
-                name: "second-number",
-                description: "Second number to be added",
-                type: ApplicationCommandOptionType.Number,
-                required: true
-            },
-        ]
+        name: "embed",
+        description: "Sends an embed",
+        
     },
 ]
 
